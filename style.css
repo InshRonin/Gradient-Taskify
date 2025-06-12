@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --bg-main: #edf7fc;
+  --bg-text: #4f002b;
+  --bg-border: #232a2e;
+  --bg-primary: #d4dbdf;
+  --bg-icon: #623246;
+  --bg-shadow: #383636 ;
+  --bg-gradient: linear-gradient(45deg, #7430c2, #c5bad1 50%, #f7ebeb 100%);
+}
+
+.dark-theme {
+  --angle: 0deg;
+  --bg-main: #121212;
+  --bg-text: #9be854;
+  --bg-border: #575757;
+  --bg-primary: #282828;
+  --bg-icon: #c0f090;
+  --bg-shadow: #ffdfdf ;
+  --bg-gradient: linear-gradient(
+    45deg,
+    #073f37,
+    #0d2c26 33%,
+    #0b1a17 67%,
+    #000000 100%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-gradient);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+}
+
+.todo-app {
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  background: var(--bg-gradient);
+  color: var(--bg-text);
+  border: 3px solid var(--bg-border);
+  backdrop-filter: blur(10px);
+}
+
+.wrapper::after,
+.wrapper::before {
+  --angle: 0deg;
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(
+    from var(--angle),
+    #99fd27,
+    #6726ff,
+    #ff2b2b,
+    #99fd27
+  );
+  border-radius: 20px;
+  animation: glow 4s linear infinite;
+  z-index: -2;
+}
+
+.wrapper::before {
+  z-index: -2;
+  filter: blur(15px);
+  opacity: 0.7;
+  animation: blur 4s linear infinite;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes glow {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@keyframes blur {
+  from {
+    filter: blur(15px);
+  }
+  to {
+    filter: blur(14px);
+  }
+}
+
+.input-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px 17px;
+  font-size: 1.1rem;
+  outline: none;
+  border-radius: 22px;
+  background: var(--bg-primary);
+  color: var(--bg-text);
+  border: 1px solid var(--bg-border);
+  transition: all 0.3s ease;
+}
+
+.input-area input:focus{
+  background: var(--bg-main);
+  border: 1px solid var(--bg-primary);
+}
+
+.input-area input::placeholder {
+  color: var(--bg-border);
+}
+
+.input-area button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  padding: 9px;
+  border: none;
+  border-radius: 50%;
+  color: var(--bg-icon);
+  font-size: 1.05rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--bg-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+  transform: scale(1.1);
+  background: var(--bg-main);
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-container img {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+#task-list {
+  width: 100%;
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-main);
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    color: var(--bg-text);
+    position: relative;
+    transition: box-shadow 0.2s ease;
+}
+
+#task-list li:hover{
+    box-shadow: 0 0 4px var(--bg-shadow);
+}
+
+#task-list li .checkbox{
+    min-width: 20px ;
+    height: 20px;
+    border: 1px solid var(--bg-border);
+    background: transparent;
+    appearance: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#task-list li .checkbox:checked{
+    background: #ff6f91;
+    transform: scale(1.1);
+}
+
+#task-list li .checkbox::before{
+    content: '\2713';
+    color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+#task-list li span{
+    flex: 1;
+    margin-left: 10px;
+    word-wrap: break-word ;
+}
+
+.task-buttons{
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+}
+
+.task-buttons button{
+    background: rgba(255, 194, 289, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: var(--bg-main);
+    font-size: .8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.task-buttons button:hover{
+ transform: scale(1.1);   
+}
+
+.task-buttons .edit{
+    background: #ffbf00;
+}
+
+.task-buttons .delete{
+    background: rgb(255, 23, 23) ;
+}
