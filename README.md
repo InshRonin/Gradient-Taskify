@@ -28,7 +28,8 @@ A stylish and responsive to-do list web app with animated gradient borders, them
 
 That's it — no installations or build steps required!
 
-gradient-taskify/
+gradient-taskify
+
 │
 ├── index.html         # Main HTML file
 
