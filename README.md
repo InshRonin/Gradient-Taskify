@@ -13,7 +13,7 @@ A stylish and responsive to-do list web app with animated gradient borders, them
 - ✅ Gradient spinning border for a modern look
 
 ## 📸 Preview
-
+```https://inshronin.github.io/Gradient-Taskify/```
 > A lightweight productivity tool built with pure **HTML**, **CSS**, and **JavaScript**.
 
 ## 🚀 Getting Started
